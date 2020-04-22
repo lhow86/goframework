@@ -3,7 +3,7 @@ A common framework of golang
 
 ## 项目结构说明
 ```
-|-- undefined
+|-- goframework
        |-- config   # 配置目录
        |-- db   # 数据库组件
        |-- logger   # 日志组件

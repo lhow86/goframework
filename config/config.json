@@ -1,0 +1,6 @@
+{
+  "log_config": {
+    "log_path": "E:\\study\\goProject\\src\\goframework\\log",
+    "log_level": "debug"
+  }
+}
