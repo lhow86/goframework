@@ -2,5 +2,23 @@
   "log_config": {
     "log_path": "E:\\study\\goProject\\src\\goframework\\log",
     "log_level": "debug"
+  },
+  "db_config": {
+    "db_host": "127.0.0.1",
+    "db_port": "3306",
+    "db_user": "root",
+    "db_password": "easipass",
+    "db_name": "swgd"
+  },
+  "redis_config": {
+    "addr": "192.168.129.181:10000",
+    "password": "",
+    "db": 0
+  },
+  "http_config": {
+    "addr": ":8080"
+  },
+  "rpc_config": {
+    "addr": ":8081"
   }
 }

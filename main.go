@@ -1,10 +1,11 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"goframework/config"
+	"goframework/db"
 	"goframework/logger"
+	"goframework/redis"
 	"os"
 )
 
@@ -12,14 +13,16 @@ import (
 从命令行里获取配置文件路径，之后初始化了配置和日志，最后打印初始化结果
 */
 func main() {
-	var configPath string
-	flag.StringVar(&configPath, "config", "", "配置文件路径")
-	flag.Parse()
+	//var configPath string
+	//flag.StringVar(&configPath, "config", "", "配置文件路径")
+	//flag.Parse()
+	//
+	//if configPath == "" {
+	//	fmt.Printf("Config Path must be assigned.")
+	//	os.Exit(1)
+	//}
 
-	if configPath == "" {
-		fmt.Printf("Config Path must be assigned.")
-		os.Exit(1)
-	}
+	var configPath = "E:\\study\\goProject\\src\\goframework\\config\\config.json"
 
 	var err error
 	err = config.InitConfig(configPath)
@@ -35,5 +38,18 @@ func main() {
 		fmt.Printf("Init logger failed. Error is %v", err)
 		os.Exit(1)
 	}
+
+	err = db.InitMysqlEngine()
+	if err != nil {
+		fmt.Printf("InitMysqlEngine failed. Error is %v", err)
+		os.Exit(1)
+	}
+
+	err = redis.InitRedis()
+	if err != nil {
+		fmt.Printf("Init Redis failed. Error is %v", err)
+		os.Exit(1)
+	}
+
 	logger.GetLogger().Info("Init success.")
 }
