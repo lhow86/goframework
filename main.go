@@ -5,6 +5,8 @@ import (
 	"goframework/config"
 	"goframework/db"
 	"goframework/logger"
+	"goframework/process/http"
+	"goframework/process/rpc"
 	"goframework/redis"
 	"os"
 )
@@ -51,5 +53,14 @@ func main() {
 		os.Exit(1)
 	}
 
+	//启动 http 服务
+	go http.StartHttpServer(config.GetConfig().HttpConfig.Addr)
+
+	//启动 rpc 服务
+	go rpc.StartRpcServer(config.GetConfig().RpcConfig.Addr)
+
 	logger.GetLogger().Info("Init success.")
+
+	//阻塞程序退出。
+	select {}
 }
