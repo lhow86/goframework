@@ -24,7 +24,7 @@ func main() {
 	//	os.Exit(1)
 	//}
 
-	var configPath = "E:\\study\\goProject\\src\\goframework\\config\\config.json"
+	var configPath = "E:\\study\\goProject\\src\\goframework\\config\\config.yaml"
 
 	var err error
 	err = config.InitConfig(configPath)
